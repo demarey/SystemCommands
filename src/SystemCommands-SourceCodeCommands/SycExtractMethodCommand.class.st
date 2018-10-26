@@ -31,6 +31,8 @@ SycExtractMethodCommand >> execute [
 		extract: selectedInterval
 		from: method selector
 		in: method origin.
+	(NautilusRefactoring onEnvironment: method class environment)
+		refactoringOptions: refactoring.
 	refactoring setOption: #methodName toUse:  [ :ref :methodName |
 		dialog := SycMethodNameEditor openOn: methodName.
 		dialog cancelled ifTrue: [  CmdCommandAborted signal ].
